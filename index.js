@@ -89,6 +89,12 @@ var finances = [
 
 // Your task is to write JavaScript code that analyzes the records to calculate each of the following:
 
+var avgProfLoss = [];
+var prevMonthVal = 0;
+var monthDiff = 0;
+var monthDiffTot = 0;
+var monthDiffAvg = 0;
+
 //The total number of months included in the dataset.
 var monthCnt = 0;
 var arrayLgth = finances.length - 1;
@@ -106,16 +112,42 @@ console.log (header);
 console.log (headerSep);
 
 for (let i = 0; i < finances.length; i++) {
+
     monthCnt++;
+
+    if (i == 0) {
+        prevMonthVal = finances[i][1];
+    }
+
     console.log ("Length of Finance Array is: " + finances.length);
 
+    //Collect total amount
     netTot += finances[i][1];
     //console.log ("Array Row Value is: " + finances[i][1])
 
+    if (i > 0 ) {
+        let avgProfLossInd = i - 1;
+        console.log ("avgProfLossInd: " + avgProfLossInd)
+        // cal moth 2 month diff (prev & current)
+        monthDiff = prevMonthVal - finances[i][1];
+        // add month diff to new array
+        avgProfLoss[avgProfLossInd] = monthDiff; 
+        console.log ("avgProfLoss: " + avgProfLoss[avgProfLossInd])
+        //add up the month2month diff to find monthdifftotal
+        monthDiffTot += monthDiff
+        //put current month into prevmonth variable to next iter check
+        prevMonthVal = finances[i][1];
+    }
+
+
+    //Output totals required to console
     if (i == arrayLgth ) {
         console.log ("Total Months: " + monthCnt);
 
         console.log ("Net Total: " + currencySym + netTot);
+
+        monthDiffAvg = monthDiffTot / i;
+        console.log ("Average Change: " + currencySym + Math.round(100*monthDiffAvg)/100)
     }
 
 
@@ -125,6 +157,15 @@ for (let i = 0; i < finances.length; i++) {
 //The net total amount of Profit/Losses over the entire period.
 
 //The average of the changes in Profit/Losses over the entire period.
+
+    //check diff between each month
+    // add value to array
+    // cal avg change over period
+
+
+
+
+
 
 //You will need to track what the total change in profits are from month to month and then find the average.
 //(Total/Number of months)
