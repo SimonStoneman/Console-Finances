@@ -203,10 +203,10 @@ var finances = [
 
         
             //Output greatest increase value
-            console.log ("Greatest Increase in Profits: " + giMonth + "(" + currencySym + greatestIncrease +")" + "\n");
+            console.log ("Greatest Increase in Profits: " + giMonth + " " + "(" + currencySym + greatestIncrease +")" + "\n");
     
             //Output greatest decrease value
-            console.log ("Greatest Decrease in Profits: " + gdMonth + "(" + currencySym + greatestDecrease +")");
+            console.log ("Greatest Decrease in Profits: " + gdMonth + " " + "(" + currencySym + greatestDecrease +")");
         }
     
     
